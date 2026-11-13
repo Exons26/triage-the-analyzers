@@ -7,6 +7,7 @@ public class RatingAverage {
 
 
     public RatingAverage() {
+        // Bean-style no-arg constructor (setters, Jackson); EvaluationService uses the two-argument one.
     }
 
     public RatingAverage(Integer criterionId, Double averageScore) {

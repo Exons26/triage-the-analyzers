@@ -60,6 +60,7 @@ public class CommentThread {
 
 
     public CommentThread() {
+        // Required by JPA: Hibernate instantiates the entity through this no-arg constructor.
     }
 
     public void addComment(Comment comment) {

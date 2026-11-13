@@ -33,6 +33,7 @@ public class Course {
     private List<Rubric> rubrics = new ArrayList<>();
 
     public Course() {
+        // Required by JPA: Hibernate instantiates the entity through this no-arg constructor.
     }
 
     public Course(String courseName, String courseDescription) {

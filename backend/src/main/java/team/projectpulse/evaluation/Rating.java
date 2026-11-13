@@ -17,6 +17,7 @@ public class Rating {
 
 
     public Rating() {
+        // Required by JPA: Hibernate instantiates the entity through this no-arg constructor.
     }
 
     public Rating(Criterion criterion, Double actualScore) {

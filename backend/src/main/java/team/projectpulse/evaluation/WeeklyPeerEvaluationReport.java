@@ -11,6 +11,7 @@ public class WeeklyPeerEvaluationReport {
 
 
     public WeeklyPeerEvaluationReport() {
+        // EvaluationService builds this with new WeeklyPeerEvaluationReport() and its setters.
     }
 
     public String getSectionName() {

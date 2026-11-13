@@ -36,6 +36,7 @@ public class PeerEvaluation {
 
 
     public PeerEvaluation() {
+        // Required by JPA: Hibernate instantiates the entity through this no-arg constructor.
     }
 
     public PeerEvaluation(String week, Student evaluator, Student evaluatee, List<Rating> ratings, String publicComment, String privateComment) {

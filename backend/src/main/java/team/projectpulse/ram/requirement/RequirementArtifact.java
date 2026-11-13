@@ -78,7 +78,7 @@ public class RequirementArtifact {
 
 
     public RequirementArtifact() {
-
+        // Required by JPA: Hibernate instantiates the entity through this no-arg constructor.
     }
 
     public RequirementArtifact(Team team, RequirementArtifactType type, String title, String content, String notes) {

@@ -26,6 +26,7 @@ public class Team {
 
 
     public Team() {
+        // Required by JPA: Hibernate instantiates the entity through this no-arg constructor.
     }
 
     public Team(String teamName, String description, String teamWebsiteUrl) {

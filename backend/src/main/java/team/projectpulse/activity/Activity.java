@@ -37,6 +37,7 @@ public class Activity {
 
 
     public Activity() {
+        // Required by JPA: Hibernate instantiates the entity through this no-arg constructor.
     }
 
     public Activity(Student student, String week, Team team, ActivityCategory category, String activity, String description, Double plannedHours, Double actualHours, ActivityStatus status) {
