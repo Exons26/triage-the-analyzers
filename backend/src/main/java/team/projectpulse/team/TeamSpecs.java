@@ -4,7 +4,11 @@ import org.springframework.data.jpa.domain.Specification;
 
 import java.util.Locale;
 
-public class TeamSpecs {
+public final class TeamSpecs {
+
+    private TeamSpecs() {
+        // Static Specification factories only; never instantiated.
+    }
 
     public static Specification<Team> containsTeamName(String providedTeamName) {
         return (root, query, criteriaBuilder) ->
