@@ -7,4 +7,23 @@
 
      Unlike the baseline, this file may grow, but every entry is a reviewed decision. -->
 <FindBugsFilter>
+  <!-- D1 (2026-11): EI_EXPOSE_REP and EI_EXPOSE_REP2 are off, project-wide. Each of the 219
+       findings stores or returns a reference to one of three kinds of field, and none of them is a
+       mutable value object (the backend has no java.util.Date or array fields; time is java.time):
+       1. JPA entity associations (Team, Student, List/Set of child entities). Hibernate owns these
+          collections; the domain code adds through them (Team adds itself with instructor.getTeams().add(this)), and a
+          defensive copy in a getter or setter would break dirty tracking and orphan removal.
+       2. Spring beans injected by constructor (controllers holding their services). Sharing the
+          singleton collaborator is the point of dependency injection.
+       3. Collections inside response DTOs, which a converter builds and Jackson serializes within one
+          request. Wrapping them in List.copyOf would add a null check (it throws on null) without
+          protecting any invariant.
+       Cost: a future class with a Date or array field would not be flagged; review must catch it. -->
+  <Match>
+    <Package name="~team\.projectpulse(\..*)?"/>
+    <Or>
+      <Bug pattern="EI_EXPOSE_REP"/>
+      <Bug pattern="EI_EXPOSE_REP2"/>
+    </Or>
+  </Match>
 </FindBugsFilter>
