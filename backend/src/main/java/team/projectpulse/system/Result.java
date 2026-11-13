@@ -16,6 +16,7 @@ public class Result {
 
 
     public Result() {
+        // Bean-style no-arg constructor (setters, Jackson); controllers use the field constructors.
     }
 
     public Result(boolean flag, Integer code, String message) {

@@ -77,7 +77,7 @@ public class ActivitySecurityService {
             // Check if the instructor is teaching the course section of the activity (BR-section-scoped-access)
             Section activitySection = activityTeam.getSection();
             List<Integer> sectionIds = instructor.getSections().stream()
-                    .map(section -> section.getSectionId())
+                    .map(Section::getSectionId)
                     .collect(Collectors.toList());
             return sectionIds.contains(activitySection.getSectionId());
         } else {

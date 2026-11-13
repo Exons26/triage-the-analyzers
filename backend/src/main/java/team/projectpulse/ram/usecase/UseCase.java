@@ -74,6 +74,7 @@ public class UseCase {
 
 
     public UseCase() {
+        // Required by JPA: Hibernate instantiates the entity through this no-arg constructor.
     }
 
     /* ---------- Convenience helpers ---------- */

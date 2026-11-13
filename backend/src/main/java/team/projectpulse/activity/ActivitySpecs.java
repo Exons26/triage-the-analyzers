@@ -2,7 +2,11 @@ package team.projectpulse.activity;
 
 import org.springframework.data.jpa.domain.Specification;
 
-public class ActivitySpecs {
+public final class ActivitySpecs {
+
+    private ActivitySpecs() {
+        // Static Specification factories only; never instantiated.
+    }
 
     public static Specification<Activity> hasWeek(String providedWeek) {
         return (root, query, criteriaBuilder) ->

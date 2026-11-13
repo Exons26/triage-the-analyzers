@@ -13,5 +13,21 @@
          xsi:schemaLocation="http://pmd.sourceforge.net/ruleset/2.0.0 https://pmd.sourceforge.io/ruleset_2_0_0.xsd">
     <description>PMD quickstart, with Project Pulse's decisions.</description>
     <rule ref="rulesets/java/quickstart.xml">
+        <!-- D2 (2026-11): UnnecessaryConstructor is off. All 10 of its findings were explicit no-arg
+             constructors that frameworks or the code call: 8 on JPA @Entity classes (Hibernate
+             instantiates entities through a no-arg constructor) and 2 on classes EvaluationService
+             builds with new X() and setters. Deleting one compiles only while the class has no
+             other constructor. If someone later adds a field constructor, the implicit no-arg
+             constructor disappears, and an entity then fails at runtime, not at compile time.
+             UncommentedEmptyConstructor stays on. It asks for these constructors to be kept and
+             explained, and each now carries a comment naming who calls it. -->
+        <exclude name="UnnecessaryConstructor"/>
+        <!-- D4 (2026-11): GuardLogStatement is off. Every log call in the backend uses SLF4J {}
+             placeholders, so the message is formatted only when its level is enabled. An unguarded
+             call costs only the evaluation of its arguments. At all 4 findings those arguments
+             were plain getters (getEmail(), getSectionName(), getName(), size()), and 3 of the 4
+             were info or error calls, levels Spring Boot logs by default. A guard is worth having
+             only when an argument is expensive to compute; that is for review to catch. -->
+        <exclude name="GuardLogStatement"/>
     </rule>
 </ruleset>
